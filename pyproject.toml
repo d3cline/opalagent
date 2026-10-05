@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opalagent"
+version = "0.3.0"
+description = "Terminal-native AI agent for Opalstack: control plane, VibeShell, operations, and safe deployment"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["opalstack>=1.0.3,<2", "click>=8.1,<9", "rich>=13,<15", "requests>=2.31,<3", "prompt-toolkit>=3.0.48,<4"]
+
+[project.optional-dependencies]
+keyring = ["keyring>=24"]
+dev = ["pytest>=8", "build>=1", "ruff>=0.9"]
+
+[project.scripts]
+opalagent = "opalstack_cli.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
